@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialMediaApp.Pages.SettingsPage">
+    <ContentPage.Content>
+        <TableView>
+            <TableSection>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="13, 0">
+                        <Label Text="Use System Theme Settings:" VerticalOptions="Center"></Label>
+                        <Switch IsToggled="{Binding UseSystemThemeSettings, Mode=TwoWay}"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="13, 0">
+                        <Label Text="Use Dark Theme:" VerticalOptions="Center"></Label>
+                        <Switch IsEnabled="{Binding CanOverrideThemeSettings}" IsToggled="{Binding UseDarkMode, Mode=TwoWay}"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="13, 0">
+                        <Label Text="Custom Theme:" VerticalOptions="Center"></Label>
+                        <Picker ItemsSource="{Binding CustomThemeNames}"
+                                WidthRequest="{OnPlatform Android=50, Default=100}"
+                                IsEnabled="{Binding CanOverrideThemeSettings}"
+                                SelectedIndex="{Binding CustomTheme, Converter={StaticResource IntEnumConverter}}"
+                                VerticalOptions="Center">
+                        </Picker>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>
