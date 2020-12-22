@@ -34,6 +34,7 @@ namespace SocialMediaApp
             builder.RegisterType<NavigationHandler>().As<INavigationHandler>().SingleInstance();
             builder.RegisterType<ErrorHandler>().As<IErrorHandler>().SingleInstance();
             builder.RegisterType<TestAuthenticationManager>().As<IAuthenticationManager>();
+            builder.RegisterType<TestFeedManager>().As<IFeedManager>();
             builder.RegisterType<SettingsViewModel>();
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<MainMenuViewModel>();

@@ -2,6 +2,8 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using SocialMediaApp.Tools;
+using SocialMediaApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,16 @@ namespace SocialMediaApp.Pages
         public BasePage()
         {
             this.InitializeComponent();
+        }
+
+        /// <inheritdoc/>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (this.BindingContext is BaseViewModel baseVM)
+            {
+                baseVM.OnAppearingAsync().FireAndForgetSafeAsync();
+            }
         }
     }
 }

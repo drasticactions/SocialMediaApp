@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using SocialMediaApp.Core.Entities.Users;
 using SocialMediaApp.Interfaces;
 using Xamarin.Essentials;
@@ -106,6 +107,15 @@ namespace SocialMediaApp.ViewModels
         /// Gets the error handler.
         /// </summary>
         protected IErrorHandler Error { get; private set; }
+
+        /// <summary>
+        /// Called when the page is appearing.
+        /// </summary>
+        /// <returns>Task.</returns>
+        public virtual Task OnAppearingAsync()
+        {
+            return Task.CompletedTask;
+        }
 
 #pragma warning disable SA1600 // Elements should be documented
         protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)
