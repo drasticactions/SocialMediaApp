@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:SocialMediaApp.Tools.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:SocialMediaApp.Tools.Converters" xmlns:templateselectors="clr-namespace:SocialMediaApp.Tools.TemplateSelectors"
              x:Class="SocialMediaApp.App">
     <Application.Resources>
-        <converters:IntEnumConverter x:Key="IntEnumConverter"/>
-        <converters:StringTrimConverter x:Key="StringTrimConverter" />
         <ResourceDictionary>
             <Color x:Key="OLED_BackgroundColorDark">#000000</Color>
             <Color x:Key="BackgroundColorDark">#202020</Color>
@@ -65,6 +63,72 @@
                 <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}" />
                 <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
             </Style>
+
+            <DataTemplate x:Key="DebugAttachmentTemplate">
+                <Frame 
+                    BorderColor="Green" 
+                    HasShadow="False">
+                    <Label Text="{Binding Url}"/>
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AudioAttachmentTemplate">
+                <Frame 
+                    BorderColor="Blue" 
+                    HasShadow="False">
+                    <Label Text="{Binding Url}"/>
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="VideoAttachmentTemplate">
+                <Frame 
+                    BorderColor="Orange" 
+                    HasShadow="False">
+                    <Label Text="{Binding Url}"/>
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="GifvAttachmentTemplate">
+                <Frame 
+                    BorderColor="Purple" 
+                    HasShadow="False">
+                    <Label Text="{Binding Url}"/>
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ImageAttachmentTemplate">
+                <Frame 
+                    CornerRadius="5" 
+                    Padding="0"
+                    HeightRequest="100"
+                    BorderColor="White" 
+                    HasShadow="False">
+                    <Image HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="FillAndExpand"
+                           Source="{Binding Url}" />
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="UnknownAttachmentTemplate">
+                <Frame 
+                    BorderColor="BlanchedAlmond" 
+                    HasShadow="False">
+                    <Label Text="{Binding Url}"/>
+                </Frame>
+            </DataTemplate>
+
+            <templateselectors:FeedAttachmentDataTemplateSelector 
+            DebugTemplate="{StaticResource DebugAttachmentTemplate}"
+            UnknownTemplate="{StaticResource UnknownAttachmentTemplate}"
+            AudioTemplate="{StaticResource AudioAttachmentTemplate}"
+            GifvTemplate="{StaticResource GifvAttachmentTemplate}"
+            VideoTemplate="{StaticResource VideoAttachmentTemplate}"
+            ImageTemplate="{StaticResource ImageAttachmentTemplate}"
+            x:Key="FeedAttachmentDataTemplateSelector"/>
+            <converters:IntEnumConverter x:Key="IntEnumConverter"/>
+            <converters:StringTrimConverter x:Key="StringTrimConverter" />
+            <converters:HasAttachmentsConverter x:Key="HasAttachmentsConverter"/>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

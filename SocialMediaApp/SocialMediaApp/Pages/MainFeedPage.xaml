@@ -56,31 +56,12 @@
                                 <Label Grid.Column="1" Text="{Binding Account.UserName, StringFormat='@{0}'}"/>
                                 <Label Grid.Column="2" Text="{Binding CreatedAt}"/>
                             </Grid>
-                            <!--<Grid Grid.Row="1" HeightRequest="100" IsVisible="{Binding HasImages}">
-                                <FlexLayout BindableLayout.ItemsSource="{Binding Images}"
-                                            Wrap="Wrap"
-                                            Direction="Row"
-                                            JustifyContent="Start"
-                                            AlignItems="Start"
-                                            AlignContent="Start">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid WidthRequest="100" Margin="4,4,4,4"
-                                                FlexLayout.Basis="{OnIdiom Phone='50%', Tablet='33%'}"
-                                                FlexLayout.AlignSelf="Start">
-                                                <Frame 
-                                                    CornerRadius="5" 
-                                                    Padding="0">
-                                                    <Image 
-                                                        HorizontalOptions="Center" 
-                                                        VerticalOptions="Center" 
-                                                        Source="{Binding .}"/>
-                                                </Frame>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </FlexLayout>
-                            </Grid>-->
+                            <StackLayout  
+                                Grid.Row="1" 
+                                IsVisible="{Binding MediaAttachments, Converter={StaticResource HasAttachmentsConverter}}" 
+                                BindableLayout.ItemsSource="{Binding MediaAttachments}"
+                                BindableLayout.ItemTemplateSelector="{StaticResource FeedAttachmentDataTemplateSelector}">
+                            </StackLayout>
                             <Label Grid.Row="2" Text="{Binding Content, Converter={StaticResource StringTrimConverter}}" />
                             <Grid Grid.Row="3">
                                 <Grid.ColumnDefinitions>

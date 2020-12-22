@@ -29,7 +29,7 @@ namespace SocialMediaApp.Core.Managers.Test
         {
             this.attachment = new Filler<Attachment>();
             this.attachment.Setup()
-                .OnProperty(n => n.Type).Use(new RandomListItem<string>("unknown", "image", "gifv", "video", "audio"));
+                .OnProperty(n => n.Type).Use(new RandomListItem<string>("image", "gifv", "video", "audio"));
             this.post = new Filler<Status>();
             this.post.Setup()
                 .OnProperty(n => n.Content).Use(new Lipsum(LipsumFlavor.LoremIpsum, 10, 20, 1, 3))
@@ -59,7 +59,7 @@ namespace SocialMediaApp.Core.Managers.Test
                         item.Url = "https://files.mastodon.social/media_attachments/files/021/165/404/original/a31a4a46cd713cd2.mp3";
                         item.PreviewUrl = "https://files.mastodon.social/media_attachments/files/021/165/404/small/a31a4a46cd713cd2.mp3";
                         break;
-                    case "mp4":
+                    case "video":
                         item.Url = "https://files.mastodon.social/media_attachments/files/022/546/306/original/dab9a597f68b9745.mp4";
                         item.PreviewUrl = "https://files.mastodon.social/media_attachments/files/022/546/306/small/dab9a597f68b9745.png";
                         break;

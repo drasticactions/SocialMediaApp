@@ -19,7 +19,7 @@ namespace SocialMediaApp.ViewModels
     /// </summary>
     public class MainFeedViewModel : BaseViewModel
     {
-        IFeedManager manager;
+        private IFeedManager manager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainFeedViewModel"/> class.
