@@ -4,7 +4,7 @@
              x:Class="SocialMediaApp.App">
     <Application.Resources>
         <converters:IntEnumConverter x:Key="IntEnumConverter"/>
-
+        <converters:StringTrimConverter x:Key="StringTrimConverter" />
         <ResourceDictionary>
             <Color x:Key="OLED_BackgroundColorDark">#000000</Color>
             <Color x:Key="BackgroundColorDark">#202020</Color>

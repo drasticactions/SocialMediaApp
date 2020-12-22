@@ -18,7 +18,6 @@
                                     <ColumnDefinition Width="30"/>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <!--<Image Source="{Binding IconSource}" />-->
                                 <Image Margin="5" WidthRequest="30" HeightRequest="30">
                                     <Image.Source>
                                         <FontImageSource
