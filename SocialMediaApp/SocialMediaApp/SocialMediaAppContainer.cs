@@ -4,8 +4,11 @@
 
 using System;
 using Autofac;
+using SocialMediaApp.Core.Managers;
+using SocialMediaApp.Core.Managers.Test;
 using SocialMediaApp.Database;
 using SocialMediaApp.Interfaces;
+using SocialMediaApp.Tools;
 using SocialMediaApp.ViewModels;
 
 namespace SocialMediaApp
@@ -28,7 +31,11 @@ namespace SocialMediaApp
             }
 
             builder.RegisterType<AppDatabase>().As<IDatabase>().SingleInstance();
+            builder.RegisterType<NavigationHandler>().As<INavigationHandler>().SingleInstance();
+            builder.RegisterType<ErrorHandler>().As<IErrorHandler>().SingleInstance();
+            builder.RegisterType<TestAuthenticationManager>().As<IAuthenticationManager>();
             builder.RegisterType<SettingsViewModel>();
+            builder.RegisterType<LoginViewModel>();
 
             return builder.Build();
         }

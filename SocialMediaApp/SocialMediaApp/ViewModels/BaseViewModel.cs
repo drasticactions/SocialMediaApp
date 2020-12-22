@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using SocialMediaApp.Core.Entities.Users;
+using SocialMediaApp.Interfaces;
 using Xamarin.Essentials;
 
 namespace SocialMediaApp.ViewModels
@@ -18,6 +20,20 @@ namespace SocialMediaApp.ViewModels
     {
         private string title = string.Empty;
         private bool isBusy = false;
+        private UserAuth currentUser;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
+        /// </summary>
+        /// <param name="database">Database.</param>
+        /// <param name="error">Error Handler.</param>
+        /// <param name="navigation">Navigation Handler.</param>
+        public BaseViewModel(IDatabase database, IErrorHandler error, INavigationHandler navigation)
+        {
+            this.Database = database;
+            this.Error = error;
+            this.Navigation = navigation;
+        }
 
         /// <inheritdoc/>
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,6 +61,29 @@ namespace SocialMediaApp.ViewModels
         }
 
         /// <summary>
+        /// Gets or sets the current user.
+        /// </summary>
+        public UserAuth CurrentUser
+        {
+            get
+            {
+                return this.currentUser;
+            }
+
+            set
+            {
+                this.SetProperty(ref this.currentUser, value);
+                this.OnPropertyChanged(nameof(this.IsUserLoggedIn));
+                this.RaiseCanExecuteChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the current user is logged in.
+        /// </summary>
+        public bool IsUserLoggedIn => this.CurrentUser != null;
+
+        /// <summary>
         /// Gets or sets the title.
         /// </summary>
         public string Title
@@ -52,6 +91,21 @@ namespace SocialMediaApp.ViewModels
             get { return this.title; }
             set { this.SetProperty(ref this.title, value); }
         }
+
+        /// <summary>
+        /// Gets the database instance.
+        /// </summary>
+        protected IDatabase Database { get; private set; }
+
+        /// <summary>
+        /// Gets the navigation handler.
+        /// </summary>
+        protected INavigationHandler Navigation { get; private set; }
+
+        /// <summary>
+        /// Gets the error handler.
+        /// </summary>
+        protected IErrorHandler Error { get; private set; }
 
 #pragma warning disable SA1600 // Elements should be documented
         protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)

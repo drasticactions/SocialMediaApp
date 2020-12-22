@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialMediaApp.Pages.LoginPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label FontSize="50" Grid.Row="1" Margin="0,25,0,0" HorizontalOptions="CenterAndExpand" Text="Social Media App"></Label>
+                    <Grid Grid.Row="2">
+                        <StackLayout WidthRequest="350" HorizontalOptions="Center" Margin="0,25,0,0">
+                            <Entry x:Name="Username" 
+                               IsSpellCheckEnabled="False"
+                               Text="{Binding Username, Mode=TwoWay}" 
+                               Placeholder="Username" Margin="0,0,0,15"/>
+                            <Entry IsPassword="True" x:Name="Password" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" Margin="0,0,0,15"/>
+                            <Button WidthRequest="350"
+                                HorizontalOptions="CenterAndExpand"
+                                x:Name="LoginButton"
+                                Text="Login"
+                                Command="{Binding LoginCommand}" />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

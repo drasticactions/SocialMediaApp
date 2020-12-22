@@ -35,6 +35,7 @@ namespace SocialMediaApp
             Container = SocialMediaAppContainer.BuildContainer(builder);
             var database = Container.Resolve<IDatabase>();
             var platform = Container.Resolve<IPlatformProperties>();
+            var navigation = Container.Resolve<INavigationHandler>();
             var settings = database.GetAppSettings();
 
             // If we're using the default system settings.
@@ -68,7 +69,14 @@ namespace SocialMediaApp
                 }
             }
 
-            this.MainPage = new SettingsPage();
+            if (database.IsUserLoggedIn)
+            {
+                navigation.SetMainAppPage();
+            }
+            else
+            {
+                navigation.PushPageAsync(new LoginPage());
+            }
         }
 
         /// <inheritdoc/>

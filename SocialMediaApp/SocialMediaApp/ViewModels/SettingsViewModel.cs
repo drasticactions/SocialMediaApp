@@ -26,7 +26,10 @@ namespace SocialMediaApp.ViewModels
         /// </summary>
         /// <param name="properties">Platform Properties.</param>
         /// <param name="database">Database.</param>
-        public SettingsViewModel(IPlatformProperties properties, IDatabase database)
+        /// <param name="error">Error Handler.</param>
+        /// <param name="navigation">Navigation Handler.</param>
+        public SettingsViewModel(IPlatformProperties properties, IDatabase database, IErrorHandler error, INavigationHandler navigation)
+            : base(database, error, navigation)
         {
             if (properties == null)
             {
