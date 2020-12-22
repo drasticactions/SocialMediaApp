@@ -24,7 +24,7 @@ namespace SocialMediaApp.Core.Managers.Test
             Filler<Post> post = new Filler<Post>();
             post.Setup()
                 .OnProperty(n => n.Id).Use(Guid.NewGuid())
-                .OnProperty(n => n.Text).Use(new Lipsum(LipsumFlavor.LoremIpsum, 30))
+                .OnProperty(n => n.Text).Use(new Lipsum(LipsumFlavor.LoremIpsum, 10, 20, 1, 3))
                 .OnProperty(n => n.Images).Use(() => GenerateImages(new Random().Next(0, 4)))
                 .SetupFor<User>()
                 .OnProperty(n => n.AvatarLink).Use("https://picsum.photos/300");

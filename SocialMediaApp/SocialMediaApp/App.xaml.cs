@@ -31,6 +31,7 @@ namespace SocialMediaApp
         /// <param name="builder">Container Builder.</param>
         public App(ContainerBuilder builder)
         {
+            Device.SetFlags(new string[] { "Shell_UWP_Experimental", "AppTheme_Experimental", "CollectionView_Experimental", "Shapes_Experimental" });
             this.InitializeComponent();
             Container = SocialMediaAppContainer.BuildContainer(builder);
             var database = Container.Resolve<IDatabase>();

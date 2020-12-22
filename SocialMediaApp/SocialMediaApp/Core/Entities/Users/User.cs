@@ -24,6 +24,11 @@ namespace SocialMediaApp.Core.Entities.Users
         public string Username { get; set; }
 
         /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the Avatar Link.
         /// </summary>
         public string AvatarLink { get; set; }

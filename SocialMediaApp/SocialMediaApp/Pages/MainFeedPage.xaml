@@ -4,10 +4,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SocialMediaApp.Pages.MainFeedPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <CollectionView ItemsSource="{Binding Posts}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="56"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid VerticalOptions="Start" Grid.Column="0">
+                            <Ellipse
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="52"
+                                HeightRequest="52"
+                                Stroke="#000000"
+                                StrokeThickness="2"
+                                Fill="White"/>
+                            <Image
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="50"
+                                HeightRequest="50"        
+                                Source="{Binding User.AvatarLink}">
+                                <Image.Clip>
+                                    <EllipseGeometry
+                                    Center="25,25"
+                                    RadiusX="25"
+                                    RadiusY="25"/>
+                                </Image.Clip>
+                            </Image>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label FontAttributes="Bold" Grid.Column="0" Text="{Binding User.Name}"/>
+                                <Label Grid.Column="1" Text="{Binding User.Username, StringFormat='@{0}'}"/>
+                                <Label Grid.Column="2" Text="{Binding PostedOn}"/>
+                            </Grid>
+                            <Grid IsVisible="{Binding HasImages}">
+                                
+                            </Grid>
+                            <Label Grid.Row="2" Text="{Binding Text}" />
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentPage.Content>
 </pages:BasePage>

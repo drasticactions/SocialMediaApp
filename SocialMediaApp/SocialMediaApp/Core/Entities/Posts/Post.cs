@@ -35,6 +35,11 @@ namespace SocialMediaApp.Core.Entities.Posts
         public List<string> Images { get; set; }
 
         /// <summary>
+        /// Gets a value indicating whether there are images attached to the post.
+        /// </summary>
+        public bool HasImages => this.Images != null && this.Images.Count > 0;
+
+        /// <summary>
         /// Gets or sets the total number of reposts.
         /// </summary>
         public int Reposts { get; set; }
