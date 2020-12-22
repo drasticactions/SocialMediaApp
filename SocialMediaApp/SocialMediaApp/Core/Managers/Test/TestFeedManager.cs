@@ -7,7 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SocialMediaApp.Core.Entities.Posts;
+using MapleFedNet.Common;
+using MapleFedNet.Model;
 using SocialMediaApp.Core.Entities.Users;
 using Tynamix.ObjectFiller;
 
@@ -18,26 +19,59 @@ namespace SocialMediaApp.Core.Managers.Test
     /// </summary>
     public class TestFeedManager : IFeedManager
     {
-        /// <inheritdoc/>
-        public async Task<List<Post>> GetMainFeedPostsAsync()
-        {
-            Filler<Post> post = new Filler<Post>();
-            post.Setup()
-                .OnProperty(n => n.Id).Use(Guid.NewGuid())
-                .OnProperty(n => n.Text).Use(new Lipsum(LipsumFlavor.LoremIpsum, 10, 20, 1, 3))
-                .OnProperty(n => n.Images).Use(() => GenerateImages(new Random().Next(0, 4)))
-                .SetupFor<User>()
-                .OnProperty(n => n.AvatarLink).Use("https://picsum.photos/300");
+        private Filler<Status> post;
+        private Filler<Attachment> attachment;
 
-            return post.Create(30).ToList();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestFeedManager"/> class.
+        /// </summary>
+        public TestFeedManager()
+        {
+            this.attachment = new Filler<Attachment>();
+            this.attachment.Setup()
+                .OnProperty(n => n.Type).Use(new RandomListItem<string>("unknown", "image", "gifv", "video", "audio"));
+            this.post = new Filler<Status>();
+            this.post.Setup()
+                .OnProperty(n => n.Content).Use(new Lipsum(LipsumFlavor.LoremIpsum, 10, 20, 1, 3))
+                .OnProperty(n => n.MediaAttachments).Use(() => this.GenerateAttachments(new Random().Next(0, 4)))
+                .SetupFor<Account>()
+                .OnProperty(n => n.StaticAvatarUrl).Use("https://picsum.photos/300");
         }
 
-        private static List<string> GenerateImages(int number)
+        /// <inheritdoc/>
+        public async Task<MastodonList<Status>> GetMainFeedPostsAsync(IMastodonCredentials credentials, string maxId = "", string sinceId = "", bool onlyMedia = false, int limit = 20)
         {
-            var list = new List<string>();
-            for (var i = 0; i < number; i++)
+            var list = this.post.Create(limit).ToList();
+            var mastodonList = new MastodonList<Status>();
+            mastodonList.AddRange(list);
+            return mastodonList;
+        }
+
+        private List<Attachment> GenerateAttachments(int number)
+        {
+            var list = new List<Attachment>();
+            list.AddRange(this.attachment.Create(number));
+            foreach (var item in list)
             {
-                list.Add("https://picsum.photos/500/500");
+                switch (item.Type)
+                {
+                    case "audio":
+                        item.Url = "https://files.mastodon.social/media_attachments/files/021/165/404/original/a31a4a46cd713cd2.mp3";
+                        item.PreviewUrl = "https://files.mastodon.social/media_attachments/files/021/165/404/small/a31a4a46cd713cd2.mp3";
+                        break;
+                    case "mp4":
+                        item.Url = "https://files.mastodon.social/media_attachments/files/022/546/306/original/dab9a597f68b9745.mp4";
+                        item.PreviewUrl = "https://files.mastodon.social/media_attachments/files/022/546/306/small/dab9a597f68b9745.png";
+                        break;
+                    case "gifv":
+                        item.Url = "https://files.mastodon.social/media_attachments/files/021/130/559/original/bc84838f77991326.mp4";
+                        item.PreviewUrl = "https://files.mastodon.social/media_attachments/files/021/130/559/small/bc84838f77991326.png";
+                        break;
+                    case "image":
+                        item.Url = "https://picsum.photos/450/450";
+                        item.PreviewUrl = "https://picsum.photos/450/450";
+                        break;
+                }
             }
 
             return list;

@@ -30,7 +30,7 @@
                                 VerticalOptions="Center"
                                 WidthRequest="50"
                                 HeightRequest="50"        
-                                Source="{Binding User.AvatarLink}">
+                                Source="{Binding Account.StaticAvatarUrl}">
                                 <Image.Clip>
                                     <EllipseGeometry
                                     Center="25,25"
@@ -52,11 +52,11 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Label FontAttributes="Bold" Grid.Column="0" Text="{Binding User.Name}"/>
-                                <Label Grid.Column="1" Text="{Binding User.Username, StringFormat='@{0}'}"/>
-                                <Label Grid.Column="2" Text="{Binding PostedOn}"/>
+                                <Label FontAttributes="Bold" Grid.Column="0" Text="{Binding Account.DisplayName}"/>
+                                <Label Grid.Column="1" Text="{Binding Account.UserName, StringFormat='@{0}'}"/>
+                                <Label Grid.Column="2" Text="{Binding CreatedAt}"/>
                             </Grid>
-                            <Grid Grid.Row="1" HeightRequest="100" IsVisible="{Binding HasImages}">
+                            <!--<Grid Grid.Row="1" HeightRequest="100" IsVisible="{Binding HasImages}">
                                 <FlexLayout BindableLayout.ItemsSource="{Binding Images}"
                                             Wrap="Wrap"
                                             Direction="Row"
@@ -80,8 +80,8 @@
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </FlexLayout>
-                            </Grid>
-                            <Label Grid.Row="2" Text="{Binding Text, Converter={StaticResource StringTrimConverter}}" />
+                            </Grid>-->
+                            <Label Grid.Row="2" Text="{Binding Content, Converter={StaticResource StringTrimConverter}}" />
                             <Grid Grid.Row="3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -95,7 +95,7 @@
                                     FontSize="13" 
                                     FontFamily="FontAwesomeRegular" />
                                 <Label Grid.Column="1"
-                                       Text="{Binding Replies}"
+                                       Text="{Binding FavouritesCount}"
                                        FontSize="12"
                                   />
                                 <Label
@@ -104,7 +104,7 @@
                                     FontSize="13" 
                                     FontFamily="FontAwesomeSolid" />
                                 <Label Grid.Column="3"
-                                       Text="{Binding Reposts}"
+                                       Text="{Binding ReblogCount}"
                                        FontSize="12"
                                   />
                             </Grid>

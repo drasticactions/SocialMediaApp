@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using MapleFedNet.Model;
 using SocialMediaApp.Core.Entities.Users;
+using Tynamix.ObjectFiller;
 
 namespace SocialMediaApp.Core.Managers.Test
 {
@@ -21,8 +23,12 @@ namespace SocialMediaApp.Core.Managers.Test
             var tcs = new TaskCompletionSource<UserAuth>();
             Task.Run(async () =>
             {
+                Filler<UserAuth> post = new Filler<UserAuth>();
+                post.Setup()
+                .SetupFor<Account>()
+                .OnProperty(u => u.AvatarUrl).Use("https://picsum.photos/300");
                 await Task.Delay(1500).ConfigureAwait(false);
-                tcs.SetResult(new UserAuth() { Id = Guid.NewGuid(), Followers = 420, Following = 69, Username = username, AvatarLink = "https://picsum.photos/300", OauthToken = string.Empty, RefreshToken = string.Empty });
+                tcs.SetResult(post.Create());
             }).ConfigureAwait(false);
             return tcs.Task;
         }

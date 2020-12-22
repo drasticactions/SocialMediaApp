@@ -11,16 +11,16 @@ namespace SocialMediaApp.Core.Entities.Users
     /// <summary>
     /// User Auth.
     /// </summary>
-    public class UserAuth : User
+    public class UserAuth
     {
         /// <summary>
-        /// Gets or sets the Oauth Token.
+        /// Gets or sets the Users Auth.
         /// </summary>
-        public string OauthToken { get; set; }
+        public MapleFedNet.Model.Auth Auth { get; set; }
 
         /// <summary>
-        /// Gets or sets the Refresh Token.
+        /// Gets or sets the currents users account.
         /// </summary>
-        public string RefreshToken { get; set; }
+        public MapleFedNet.Model.Account Account { get; set; }
     }
 }

@@ -6,7 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using SocialMediaApp.Core.Entities.Posts;
+using MapleFedNet.Common;
+using MapleFedNet.Model;
 
 namespace SocialMediaApp.Core.Managers
 {
@@ -18,7 +19,12 @@ namespace SocialMediaApp.Core.Managers
         /// <summary>
         /// Get Main Feed Posts.
         /// </summary>
+        /// <param name="credentials">Mastodon Credentials.</param>
+        /// <param name="maxId">Max Post Id.</param>
+        /// <param name="sinceId">Since Post Id.</param>
+        /// <param name="onlyMedia">Only return media.</param>
+        /// <param name="limit">Amount of posts to return.</param>
         /// <returns>List of Posts.</returns>
-        Task<List<Post>> GetMainFeedPostsAsync();
+        Task<MastodonList<Status>> GetMainFeedPostsAsync(IMastodonCredentials credentials, string maxId = "", string sinceId = "", bool onlyMedia = false, int limit = 20);
     }
 }

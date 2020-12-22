@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SocialMediaApp.Core.Entities.Posts;
+using MapleFedNet.Model;
 using SocialMediaApp.Core.Managers;
 using SocialMediaApp.Interfaces;
 
@@ -32,14 +32,14 @@ namespace SocialMediaApp.ViewModels
             : base(database, error, navigation)
         {
             this.manager = manager;
-            this.Posts = new ObservableCollection<Post>();
+            this.Posts = new ObservableCollection<Status>();
             this.Title = "Main Feed";
         }
 
         /// <summary>
         /// Gets the posts on the page.
         /// </summary>
-        public ObservableCollection<Post> Posts { get; internal set; }
+        public ObservableCollection<Status> Posts { get; internal set; }
 
         /// <summary>
         /// Get Main Feed Posts.
@@ -48,7 +48,7 @@ namespace SocialMediaApp.ViewModels
         public async Task GetMainFeedPostsAsync()
         {
             this.IsBusy = true;
-            var posts = await this.manager.GetMainFeedPostsAsync().ConfigureAwait(false);
+            var posts = await this.manager.GetMainFeedPostsAsync(null).ConfigureAwait(false);
             foreach (var post in posts)
             {
                 this.Posts.Add(post);
