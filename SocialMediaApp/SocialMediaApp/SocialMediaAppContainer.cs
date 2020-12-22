@@ -36,6 +36,8 @@ namespace SocialMediaApp
             builder.RegisterType<TestAuthenticationManager>().As<IAuthenticationManager>();
             builder.RegisterType<SettingsViewModel>();
             builder.RegisterType<LoginViewModel>();
+            builder.RegisterType<MainMenuViewModel>();
+            builder.RegisterType<MainFeedViewModel>();
 
             return builder.Build();
         }

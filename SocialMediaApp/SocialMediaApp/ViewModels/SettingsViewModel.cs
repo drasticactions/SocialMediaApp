@@ -44,6 +44,7 @@ namespace SocialMediaApp.ViewModels
             this.database = database;
             this.properties = properties;
             this.appSettings = database.GetAppSettings();
+            this.Title = "Settings";
         }
 
         /// <summary>

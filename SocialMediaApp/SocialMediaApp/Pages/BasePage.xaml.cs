@@ -1,4 +1,4 @@
-﻿// <copyright file="SettingsPage.xaml.cs" company="Drastic Actions">
+﻿// <copyright file="BasePage.xaml.cs" company="Drastic Actions">
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
@@ -7,26 +7,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Autofac;
-using SocialMediaApp.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SocialMediaApp.Pages
 {
     /// <summary>
-    /// Settings Page.
+    /// Base Page.
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : BasePage
+    public partial class BasePage : ContentPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SettingsPage"/> class.
+        /// Initializes a new instance of the <see cref="BasePage"/> class.
         /// </summary>
-        public SettingsPage()
+        public BasePage()
         {
             this.InitializeComponent();
-            this.BindingContext = App.Container.Resolve<SettingsViewModel>();
         }
     }
 }

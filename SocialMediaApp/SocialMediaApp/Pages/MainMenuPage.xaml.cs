@@ -1,4 +1,4 @@
-﻿// <copyright file="SettingsPage.xaml.cs" company="Drastic Actions">
+﻿// <copyright file="MainMenuPage.xaml.cs" company="Drastic Actions">
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
@@ -15,18 +15,18 @@ using Xamarin.Forms.Xaml;
 namespace SocialMediaApp.Pages
 {
     /// <summary>
-    /// Settings Page.
+    /// Main Menu Page.
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : BasePage
+    public partial class MainMenuPage : ContentPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SettingsPage"/> class.
+        /// Initializes a new instance of the <see cref="MainMenuPage"/> class.
         /// </summary>
-        public SettingsPage()
+        public MainMenuPage(MainMenuViewModel vm)
         {
             this.InitializeComponent();
-            this.BindingContext = App.Container.Resolve<SettingsViewModel>();
+            this.BindingContext = vm;
         }
     }
 }
