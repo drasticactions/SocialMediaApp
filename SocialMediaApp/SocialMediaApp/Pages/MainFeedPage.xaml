@@ -12,15 +12,18 @@
                             <ColumnDefinition Width="56"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid VerticalOptions="Start" Grid.Column="0">
-                            <Ellipse
+                        <Grid
+                            Margin="0,5,0,0"
+                            VerticalOptions="Start" 
+                            Grid.Column="0">
+                            <!--<Ellipse
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 WidthRequest="52"
                                 HeightRequest="52"
                                 Stroke="#000000"
                                 StrokeThickness="2"
-                                Fill="White"/>
+                                Fill="White"/>-->
                             <Image
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
@@ -51,8 +54,30 @@
                                 <Label Grid.Column="1" Text="{Binding User.Username, StringFormat='@{0}'}"/>
                                 <Label Grid.Column="2" Text="{Binding PostedOn}"/>
                             </Grid>
-                            <Grid IsVisible="{Binding HasImages}">
-                                
+                            <Grid Grid.Row="1" HeightRequest="100" IsVisible="{Binding HasImages}">
+                                <FlexLayout BindableLayout.ItemsSource="{Binding Images}"
+                                            Wrap="Wrap"
+                                            Direction="Row"
+                                            JustifyContent="Start"
+                                            AlignItems="Start"
+                                            AlignContent="Start">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid WidthRequest="100" Margin="4,4,4,4"
+                                                FlexLayout.Basis="{OnIdiom Phone='50%', Tablet='33%'}"
+                                                FlexLayout.AlignSelf="Start">
+                                                <Frame 
+                                                    CornerRadius="5" 
+                                                    Padding="0">
+                                                    <Image 
+                                                        HorizontalOptions="Center" 
+                                                        VerticalOptions="Center" 
+                                                        Source="{Binding .}"/>
+                                                </Frame>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
                             </Grid>
                             <Label Grid.Row="2" Text="{Binding Text}" />
                         </Grid>

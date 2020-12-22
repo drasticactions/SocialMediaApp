@@ -35,13 +35,13 @@ namespace SocialMediaApp.ViewModels
                 new MainMenuItem()
                 {
                     Title = "Main Feed",
-                    IconSource = string.Empty,
+                    IconSource = "",
                     Page = new NavigationPage(new MainFeedPage()),
                 },
                 new MainMenuItem()
                 {
                     Title = "Settings",
-                    IconSource = string.Empty,
+                    IconSource = "",
                     Page = new NavigationPage(new SettingsPage()),
                 },
             };

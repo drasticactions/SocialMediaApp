@@ -19,7 +19,17 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <!--<Image Source="{Binding IconSource}" />-->
-                                <Label Grid.Column="1" Text="{Binding Title}" />
+                                <Image Margin="5" WidthRequest="30" HeightRequest="30">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            Color="{DynamicResource DynamicTextColor}"
+                                            FontFamily="FontAwesomeSolid"
+                                            Glyph="{Binding IconSource}"
+                                            Size="24"
+                                            />
+                                    </Image.Source>
+                                </Image>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="{Binding Title}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
