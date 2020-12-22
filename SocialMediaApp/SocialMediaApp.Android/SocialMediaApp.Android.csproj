@@ -19,7 +19,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialMediaApp\SocialMediaApp.csproj">
-      <Project>{16AB4A40-4A8E-48A5-8926-84AB84B05968}</Project>
+      <Project>{3CB78E92-915F-449D-94EA-D558A5B4D7A1}</Project>
       <Name>SocialMediaApp</Name>
     </ProjectReference>
   </ItemGroup>

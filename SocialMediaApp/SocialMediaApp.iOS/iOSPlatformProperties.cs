@@ -32,6 +32,11 @@ namespace SocialMediaApp.iOS
                     {
                         var currentUIViewController = GetVisibleViewController();
 
+                        if (currentUIViewController == null)
+                        {
+                            return false;
+                        }
+
                         var userInterfaceStyle = currentUIViewController.TraitCollection.UserInterfaceStyle;
 
                         switch (userInterfaceStyle)
@@ -61,6 +66,11 @@ namespace SocialMediaApp.iOS
             UIViewController viewController = null;
 
             var window = UIApplication.SharedApplication.KeyWindow;
+
+            if (window == null)
+            {
+                return null;
+            }
 
             if (window.WindowLevel == UIWindowLevel.Normal)
             {

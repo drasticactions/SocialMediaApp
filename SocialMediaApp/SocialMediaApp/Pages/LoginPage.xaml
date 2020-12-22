@@ -17,7 +17,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label FontSize="50" Grid.Row="1" Margin="0,25,0,0" HorizontalOptions="CenterAndExpand" Text="Social Media App"></Label>
+                    <Label FontSize="30" Grid.Row="1" Margin="0,25,0,0" HorizontalOptions="CenterAndExpand" Text="Social Media App"></Label>
                     <Grid Grid.Row="2">
                         <StackLayout WidthRequest="350" HorizontalOptions="Center" Margin="0,25,0,0">
                             <Entry x:Name="Username" 
