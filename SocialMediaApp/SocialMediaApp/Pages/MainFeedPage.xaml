@@ -5,7 +5,8 @@
              xmlns:fontawesome="clr-namespace:FontAwesome"
              x:Class="SocialMediaApp.Pages.MainFeedPage">
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding Posts}">
+        <CollectionView
+            ItemsSource="{Binding Posts}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -14,7 +15,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid
-                            Margin="0,5,0,0"
+                            Margin="10,5,0,0"
                             VerticalOptions="Start" 
                             Grid.Column="0">
                             <!--<Ellipse
@@ -28,18 +29,18 @@
                             <Image
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
-                                WidthRequest="50"
-                                HeightRequest="50"        
+                                WidthRequest="45"
+                                HeightRequest="45"        
                                 Source="{Binding Account.StaticAvatarUrl}">
                                 <Image.Clip>
                                     <EllipseGeometry
-                                    Center="25,25"
-                                    RadiusX="25"
-                                    RadiusY="25"/>
+                                    Center="20,20"
+                                    RadiusX="20"
+                                    RadiusY="20"/>
                                 </Image.Clip>
                             </Image>
                         </Grid>
-                        <Grid Grid.Column="1">
+                        <Grid Margin="0,0,10,0" Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
