@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:SocialMediaApp.Tools.Converters" xmlns:templateselectors="clr-namespace:SocialMediaApp.Tools.TemplateSelectors"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converters="clr-namespace:SocialMediaApp.Tools.Converters" 
+             xmlns:templateselectors="clr-namespace:SocialMediaApp.Tools.TemplateSelectors" 
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
              x:Class="SocialMediaApp.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -89,8 +92,14 @@
                 <Frame
                     BackgroundColor="{DynamicResource DynamicBackgroundColor}"
                     BorderColor="Orange" 
+                    CornerRadius="5" 
+                    Padding="0"
+                    HeightRequest="200"
                     HasShadow="False">
-                    <Label Text="{Binding Url}"/>
+                    <behaviors:MediaElement HeightRequest="200"
+                                            Aspect="AspectFill"
+                                            ShowsPlaybackControls="True" 
+                                            Source="{Binding Url}" />
                 </Frame>
             </DataTemplate>
 
