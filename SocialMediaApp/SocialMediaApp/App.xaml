@@ -32,6 +32,10 @@
                 <Setter Property="TextColor" Value="{DynamicResource DynamicTextColor}" />
             </Style>
 
+            <Style ApplyToDerivedTypes="True" TargetType="Picker">
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTextColor}" />
+            </Style>
+
             <Style ApplyToDerivedTypes="True" TargetType="Switch">
                 <Setter Property="OnColor" Value="{DynamicResource SwitchOnColor}" />
             </Style>
@@ -74,6 +78,7 @@
 
             <DataTemplate x:Key="AudioAttachmentTemplate">
                 <Frame 
+                    BackgroundColor="{DynamicResource DynamicBackgroundColor}"
                     BorderColor="Blue" 
                     HasShadow="False">
                     <Label Text="{Binding Url}"/>
@@ -81,7 +86,8 @@
             </DataTemplate>
 
             <DataTemplate x:Key="VideoAttachmentTemplate">
-                <Frame 
+                <Frame
+                    BackgroundColor="{DynamicResource DynamicBackgroundColor}"
                     BorderColor="Orange" 
                     HasShadow="False">
                     <Label Text="{Binding Url}"/>
@@ -90,6 +96,7 @@
 
             <DataTemplate x:Key="GifvAttachmentTemplate">
                 <Frame 
+                    BackgroundColor="{DynamicResource DynamicBackgroundColor}"
                     BorderColor="Purple" 
                     HasShadow="False">
                     <Label Text="{Binding Url}"/>
@@ -98,6 +105,7 @@
 
             <DataTemplate x:Key="ImageAttachmentTemplate">
                 <Frame 
+                    BackgroundColor="{DynamicResource DynamicBackgroundColor}"
                     CornerRadius="5" 
                     Padding="0"
                     HeightRequest="100"
@@ -112,6 +120,7 @@
 
             <DataTemplate x:Key="UnknownAttachmentTemplate">
                 <Frame 
+                    BackgroundColor="{DynamicResource DynamicBackgroundColor}"
                     BorderColor="BlanchedAlmond" 
                     HasShadow="False">
                     <Label Text="{Binding Url}"/>

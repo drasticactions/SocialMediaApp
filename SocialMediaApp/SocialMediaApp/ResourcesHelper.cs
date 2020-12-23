@@ -100,6 +100,7 @@ namespace SocialMediaApp
                 case AppCustomTheme.OLED:
                     SetDarkMode();
                     SetDynamicResource(DynamicBackgroundColor, "OLED_BackgroundColorDark");
+                    SetDynamicResource(DynamicHeaderBackgroundColor, "OLED_BackgroundColorDark");
                     break;
                 default:
                     break;

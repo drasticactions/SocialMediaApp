@@ -10,15 +10,20 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="56"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Grid Padding="0,10,0,10" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="56"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
                             Margin="10,5,0,0"
                             VerticalOptions="Start" 
                             Grid.Column="0">
-                            <!--<Ellipse
+                                <!--<Ellipse
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 WidthRequest="52"
@@ -26,71 +31,73 @@
                                 Stroke="#000000"
                                 StrokeThickness="2"
                                 Fill="White"/>-->
-                            <Image
+                                <Image
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 WidthRequest="45"
                                 HeightRequest="45"        
                                 Source="{Binding Account.StaticAvatarUrl}">
-                                <Image.Clip>
-                                    <EllipseGeometry
+                                    <Image.Clip>
+                                        <EllipseGeometry
                                     Center="20,20"
                                     RadiusX="20"
                                     RadiusY="20"/>
-                                </Image.Clip>
-                            </Image>
-                        </Grid>
-                        <Grid Margin="0,0,10,0" Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Label FontAttributes="Bold" Grid.Column="0" Text="{Binding Account.DisplayName}"/>
-                                <Label Grid.Column="1" Text="{Binding Account.UserName, StringFormat='@{0}'}"/>
-                                <Label Grid.Column="2" Text="{Binding CreatedAt}"/>
+                                    </Image.Clip>
+                                </Image>
                             </Grid>
-                            <StackLayout  
+                            <Grid Margin="0,0,10,0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label FontAttributes="Bold" Grid.Column="0" Text="{Binding Account.DisplayName}"/>
+                                    <Label Grid.Column="1" Text="{Binding Account.UserName, StringFormat='@{0}'}"/>
+                                    <Label Grid.Column="2" Text="{Binding CreatedAt}"/>
+                                </Grid>
+                                <StackLayout  
                                 Grid.Row="1" 
                                 IsVisible="{Binding MediaAttachments, Converter={StaticResource HasAttachmentsConverter}}" 
                                 BindableLayout.ItemsSource="{Binding MediaAttachments}"
                                 BindableLayout.ItemTemplateSelector="{StaticResource FeedAttachmentDataTemplateSelector}">
-                            </StackLayout>
-                            <Label Grid.Row="2" Text="{Binding Content, Converter={StaticResource StringTrimConverter}}" />
-                            <Grid Grid.Row="3">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label
+                                </StackLayout>
+                                <Label Grid.Row="2" Text="{Binding Content, Converter={StaticResource StringTrimConverter}}" />
+                                <Grid Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
                                     Grid.Column="0"
                                     Text="{x:Static fontawesome:FontAwesomeIcons.Comments}"
                                     FontSize="13" 
                                     FontFamily="FontAwesomeRegular" />
-                                <Label Grid.Column="1"
+                                    <Label Grid.Column="1"
                                        Text="{Binding FavouritesCount}"
                                        FontSize="12"
                                   />
-                                <Label
+                                    <Label
                                     Grid.Column="2"
                                     Text="{x:Static fontawesome:FontAwesomeIcons.Retweet}"
                                     FontSize="13" 
                                     FontFamily="FontAwesomeSolid" />
-                                <Label Grid.Column="3"
+                                    <Label Grid.Column="3"
                                        Text="{Binding ReblogCount}"
                                        FontSize="12"
                                   />
+                                </Grid>
                             </Grid>
                         </Grid>
+                        <Rectangle Grid.Row="1" BackgroundColor="Gray" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
